@@ -1,8 +1,9 @@
 import "./style.css";
 import logo from "./assets/images/logo-js.svg";
-import createTodo from "./todo";
-import createProject from "./project";
-import ProjectManager from "./projectManager";
+import createTodo from "./modules/todo";
+import createProject from "./modules/project";
+import ProjectManager from "./modules/projectManager";
+
 
 
 const img = document.createElement("img");
