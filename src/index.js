@@ -3,8 +3,7 @@ import logo from "./assets/images/logo-js.svg";
 import createTodo from "./modules/todo";
 import createProject from "./modules/project";
 import ProjectManager from "./modules/projectManager";
-
-
+import { renderProject } from "./modules/ui";
 
 const img = document.createElement("img");
 img.src = logo;
@@ -13,27 +12,21 @@ img.width = 150;
 document.body.appendChild(img);
 
 
-// TEST todo.js and project.js
-const testProject = createProject("Personal");
-
-const todo1 = createTodo("Buy groceries", "Milk, bread, eggs", "2025-06-20", "high");
-const todo2 = createTodo("Workout", "Leg day at the gym", "2025-06-21", "medium");
-
-testProject.addTodo(todo1);
-testProject.addTodo(todo2);
-
-console.log("Project name:", testProject.name);
-console.table(testProject.todos);
-
-
 // TEST projectManager.js
 ProjectManager.addProject("Personal");
 ProjectManager.addProject("Work");
 
+// TEST todo.js
+const todo1 = createTodo("Buy groceries", "Milk, bread, eggs", "2025-06-20", "high");
+const todo2 = createTodo("Workout", "Leg day at the gym", "2025-06-21", "medium");
+
+// TEST work project
+const workProject = ProjectManager.getProjects().find(p => p.name === "Work");
+workProject.addTodo(todo1);
+workProject.addTodo(todo2);
+
 ProjectManager.setCurrentProject("Work");
 
-const current = ProjectManager.getCurrentProject();
-console.log("Current Project:", current);
-
-console.log("All Projects:");
-console.table(ProjectManager.getProjects());
+// UI
+document.body.innerHTML = "";
+document.body.appendChild(renderProject(ProjectManager.getCurrentProject()));
