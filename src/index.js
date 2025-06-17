@@ -3,13 +3,15 @@ import logo from "./assets/images/logo-js.svg";
 import createTodo from "./modules/todo";
 import createProject from "./modules/project";
 import ProjectManager from "./modules/projectManager";
-import { renderProject } from "./modules/ui";
+import { renderProject, renderProjectList } from "./modules/ui";
+
 
 const img = document.createElement("img");
 img.src = logo;
 img.alt = "Logo";
 img.width = 150;
 document.body.appendChild(img);
+
 
 
 // TEST projectManager.js
@@ -28,5 +30,8 @@ workProject.addTodo(todo2);
 ProjectManager.setCurrentProject("Work");
 
 // UI
+const projectListEl = renderProjectList(ProjectManager.getProjects());
+
 document.body.innerHTML = "";
+document.body.appendChild(projectListEl);
 document.body.appendChild(renderProject(ProjectManager.getCurrentProject()));
