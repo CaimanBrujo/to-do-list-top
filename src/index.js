@@ -3,6 +3,8 @@ import createTodo from "./modules/todo";
 import createProject from "./modules/project";
 import ProjectManager from "./modules/projectManager";
 import renderApp from "./modules/renderApp";
+import { renderProject, renderProjectList, renderProjectFormSection } from "./modules/ui";
+
 
 // TESTING
 ProjectManager.addProject("Personal");
