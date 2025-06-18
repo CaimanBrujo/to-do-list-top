@@ -21,9 +21,6 @@ html {
 }
 
 body {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-areas: "sidebar main";
     gap: 2rem;
     width: 100%;
     max-width: 1000px;
@@ -35,10 +32,175 @@ body {
     padding: 2rem;
 }
 
+#app {
+    background-color: var(--dark);
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-areas: "sidebar main";
+    height: 100%;
+    gap: 2rem;
+}
+
+/* Sidebar */
 .project-list {
     grid-area: sidebar;
 }
 
+aside {
+    padding: 1rem;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+}
+
+.project-name {
+    font-weight: bold;
+}
+
+.delete-project,
+.delete-todo-btn {
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+}
+
+.project-form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.project-form-section button {
+    margin-top: 10px;
+}
+
+.todo-form button,
+.new-project-form button,
+.edit-todo-form button,
+.toggle-project-form,
+.add-todo-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #444;
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.todo-form button:hover,
+.new-project-form button:hover,
+.edit-todo-form button:hover,
+.toggle-project-form:hover,
+.add-todo-btn:hover {
+    background-color: #666;
+}
+
+/* Main */
 .project {
     grid-area: main;
+    padding: 1rem;
+}
+
+/* Project title */
+.project-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-title {
+    font-size: 1.5rem;
+}
+
+/* Pencil btn */
+.edit-title-btn,
+.edit-todo-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+}
+
+/* To-Do List */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #444;
+    background-color: var(--grey);
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.todo-item.completed .todo-title {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.todo-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.todo-title {
+    flex: 1;
+}
+
+/* Forms */
+.todo-form,
+.new-project-form,
+.edit-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.todo-form input,
+.todo-form select,
+.new-project-form input,
+.edit-todo-form input,
+.edit-todo-form select {
+    padding: 0.5rem;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background-color: #111;
+    color: var(--white);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.empty-message {
+    color: #aaa;
+    text-align: center;
+    padding: 2rem;
 }
