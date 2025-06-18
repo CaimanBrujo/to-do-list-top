@@ -2,9 +2,10 @@ import { renderProject, renderProjectList, renderProjectFormSection } from "./ui
 import ProjectManager from "./projectManager";
 
 export default function renderApp() {
-    document.body.innerHTML = "";
+    const app = document.querySelector("#app");
+    app.innerHTML = "";
 
-    document.body.appendChild(renderProjectFormSection());
+    app.appendChild(renderProjectFormSection());
 
     const sidebar = renderProjectList(ProjectManager.getProjects());
     sidebar.classList.add("project-list");
@@ -23,6 +24,6 @@ export default function renderApp() {
         main.appendChild(message);
     }
 
-    document.body.appendChild(sidebar);
-    document.body.appendChild(main);
+    app.appendChild(sidebar);
+    app.appendChild(main);
 }
