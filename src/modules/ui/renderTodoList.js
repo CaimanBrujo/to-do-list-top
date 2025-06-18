@@ -9,9 +9,19 @@ export default function renderTodoList(project) {
     project.todos.forEach((todo, index) => {
         const item = document.createElement("li");
         item.classList.add("todo-item");
+        if (todo.completed) item.classList.add("completed");
 
         const content = document.createElement("div");
         content.classList.add("todo-content");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = todo.completed || false;
+        checkbox.classList.add("todo-checkbox");
+        checkbox.addEventListener("change", () => {
+            todo.completed = checkbox.checked;
+            renderApp();
+        });
 
         const text = document.createElement("span");
         text.classList.add("todo-title");
@@ -98,6 +108,7 @@ export default function renderTodoList(project) {
             inputTitle.focus();
         });
 
+        content.appendChild(checkbox);
         content.appendChild(text);
         content.appendChild(editBtn);
         content.appendChild(deleteBtn);
