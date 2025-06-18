@@ -7,9 +7,7 @@ const ProjectManager = (function () {
     function addProject(name) {
         const project = createProject(name);
         projects.push(project);
-
         if (!currentProject) currentProject = project;
-
         return project;
     }
 
