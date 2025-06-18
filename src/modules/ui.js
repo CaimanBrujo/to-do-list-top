@@ -1,6 +1,7 @@
 import ProjectManager from "./projectManager";
 import renderApp from "./renderApp";
 import createTodo from "./todo";
+import { formatDistanceToNow, parseISO } from "date-fns";
 
 
 function renderProject(project) {
@@ -15,9 +16,13 @@ function renderProject(project) {
 
     project.todos.forEach((todo) => {
         const item = document.createElement("li");
-        item.textContent = `${todo.title} (${todo.dueDate})`;
+
+        const distance = formatDistanceToNow(parseISO(todo.dueDate), { addSuffix: true });
+        item.textContent = `${todo.title} (${distance})`;
+
         list.appendChild(item);
     });
+
 
     container.appendChild(list);
 
